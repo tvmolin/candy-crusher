@@ -1,0 +1,33 @@
+body {
+  background-color: aquamarine;
+}
+
+.Candy {
+  height: 100px;
+  width: 100px;
+  border: 2px solid black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: absolute;
+  cursor: pointer;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.Diamond {
+  width: 70px;
+  height: 70px;
+  transform: rotate(45deg);
+  /* animation: cubic-bezier(1, 0, 0, 1); */
+}
+
+.Circle {
+  border-radius: 50%;
+}
