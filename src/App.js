@@ -5,15 +5,17 @@ import Candy from "./Candy";
 import {
   createRandomStartPosition,
   generateMoreCandies,
-  resolveCandiesToDelete,
+  resolveCandiesToDelete
 } from "./Utils";
+
+export const TOTAL_AMOUNT_OF_CANDIES = 50;
 
 function App() {
   //Game board is a 13 rows 6 columns grid
   const [candies, setCandies] = useState(createRandomStartPosition());
   const [score, setScore] = useState(0);
   const [scoreToAdd, setScoreToAdd] = useState(0);
-  const [candiesLeft, setCandiesLeft] = useState(50);
+  const [candiesLeft, setCandiesLeft] = useState(TOTAL_AMOUNT_OF_CANDIES);
 
   return (
     <>
@@ -22,14 +24,20 @@ function App() {
           <Header>
             <Instructions>
               Scoring is based on neighbouring tiles. Try to click on tiles that
-              have 4 neighbours for the biggest amount of combo points :){" "}
+              have 4 neighbours for the biggest amount of combo points :)
             </Instructions>
             <Score>
-              <div>SCORE: {score}</div>
+              <div style={{ display: "flex" }}>
+                SCORE: <div role="ScoreCounter"> {score}</div>
+              </div>
               <div>{scoreToAdd > 0 ? `LAST: +${scoreToAdd}` : null}</div>
             </Score>
-            <div>Candies left: {candiesLeft}</div>
-            <button onClick={resetGame}>RESET</button>
+            <div style={{ display: "flex" }}>
+              Candies left: <div role="CandiesLeftCounter"> {candiesLeft}</div>
+            </div>
+            <button role="Reset" onClick={resetGame}>
+              RESET
+            </button>
           </Header>
           <CandyContainer>
             {candies.map((candy) => (
@@ -46,7 +54,7 @@ function App() {
         </>
       ) : (
         <GameOverScreen>
-          <div>GAME OVER! Your score: {score}</div>
+          <div role="GameOverMessage">GAME OVER! Your score: {score}</div>
           <div>
             <button onClick={resetGame}>PLAY AGAIN?</button>
           </div>
@@ -58,7 +66,7 @@ function App() {
   function resetGame() {
     setScore(0);
     setScoreToAdd(0);
-    setCandiesLeft(20);
+    setCandiesLeft(TOTAL_AMOUNT_OF_CANDIES);
     setCandies(createRandomStartPosition());
   }
 
