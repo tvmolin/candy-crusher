@@ -5,7 +5,7 @@ import Candy from "./Candy";
 import {
   createRandomStartPosition,
   generateMoreCandies,
-  resolveCandiesToDelete
+  resolveCandiesToDelete,
 } from "./Utils";
 
 export const TOTAL_AMOUNT_OF_CANDIES = 50;
@@ -95,7 +95,7 @@ function App() {
     }
 
     function updateScore() {
-      const calculatedScoreToAdd = scoreToAdd * (scoreToAdd * scoreToAdd);
+      const calculatedScoreToAdd = scoreToAdd * scoreToAdd * scoreToAdd;
       setScoreToAdd(calculatedScoreToAdd);
       setScore(score + calculatedScoreToAdd);
     }
